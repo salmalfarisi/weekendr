@@ -1,2 +1,2 @@
 # weekendr
-Simple social media
+Simple crud data
