@@ -41,9 +41,10 @@ class DataM extends CI_Model
         }
     }
 
-    public function index()
+    public function index($id)
     {
         $this->db->select("*");
+        $this->db->where('userid', $id);
         $query = $this->db->get("data");
         return $query->result();
     }

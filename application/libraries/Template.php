@@ -7,7 +7,7 @@ class Template {
         $object = new stdClass();
         $object->code = $code;
         $object->message = $message;
-        if($data != null)
+        if(isset($data) == true)
         {
             $object->data = $data;
         }

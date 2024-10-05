@@ -7,18 +7,38 @@ class Auth extends CI_Controller {
         parent::__construct();
     }
 
+    public function Register()
+    {
+        $cek_exist = $this->user_m->check_exist($this->input->post('username'), $this->input->post('email'));
+        if($cek_exist == false)
+        {
+            $this->template->sendError(400, 'Akun sudah dibuat dalam database');
+        }
+        else
+        {
+            $input = [
+                'username' => strtolower($this->input->post('username')),
+                'name' => $this->input->post('name'),
+                'phone' => $this->input->post('phone'),
+                'email' => strtolower($this->input->post('email')),
+                'password' => $this->encryption->encrypt($this->input->post('password')),
+            ];
+            $this->user_m->insert($input);
+            $this->template->sendSuccess(205, 'Berhasil daftar akun', null);
+        }
+    }
+
     public function Login()
     {
-        $form = json_decode(trim(file_get_contents('php://input')), true);
-        $cek_exist = $this->user_m->check_exist($form['user'], $form['user']);
+        $cek_exist = $this->user_m->check_exist(strtolower($this->input->post('user')), strtolower($this->input->post('user')));
         if($cek_exist == true)
         {
             $this->template->sendError(400, 'Akun tidak ditemukan dalam database');
         }
         else
         {
-            $getuser = $this->user_m->getOne($form['user']);
-            if($this->encryption->decrypt($getuser->password) != $form['password'])
+            $getuser = $this->user_m->getOne($this->input->post('user'));
+            if($this->encryption->decrypt($getuser->password) != $this->input->post('password'))
             {
                 $this->template->sendError(400, 'Password anda salah');
             }
@@ -96,6 +116,6 @@ class Auth extends CI_Controller {
     public function verification()
     {
         $response = $this->template->verify();
-        $this->template->sendSuccess($status, 'user data', $response);
+        $this->template->sendSuccess(200, 'user data', $response);
     }
 }

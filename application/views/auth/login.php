@@ -3,22 +3,22 @@
       <div class="px-5">
         <h2 class="text-2xl font-bold text-[#002D74]">Login</h2>
         <p class="text-sm mt-4 text-[#002D74]">If you have an account, please login</p>
-        <form class="mt-6" action="<?php echo base_url().'Auth/Login'?>" method="POST">
+        <form class="mt-6" action="#" method="POST">
           <div>
             <label class="block text-gray-700">Email Address or Username</label>
-            <input type="string" name="user" id="" placeholder="Enter Email Address or Username" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+            <input type="string" name="user" id="user" placeholder="Enter Email Address or Username" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
           </div>
 
           <div class="mt-4">
             <label class="block text-gray-700">Password</label>
-            <input type="password" name="password" id="" placeholder="Enter Password" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required>
+            <input type="password" name="password" id="password" placeholder="Enter Password" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" required>
           </div>
 
           <div class="text-right mt-2">
             <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
           </div>
 
-          <button type="submit" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
+          <button type="button" id="login" class="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
                 px-4 py-3 mt-6">Log In</button>
         </form>
 
@@ -34,3 +34,5 @@
       </div>
     </div>
   </section>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
